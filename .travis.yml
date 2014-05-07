@@ -9,5 +9,7 @@ deploy:
   api_key:
     secure: Bh1s9MubrKlaFln7vysY91jmAU0N26tsl6SwRKYDkBxlWbZc7jplpjQAPWdtVvxFWS7Vymr9rCjqKX8twcQitqIJfCPQXugIVWJvT5BZNfP6AHdUzeibbkio/rZUEa9/3NzTbU/yB5I/IG0w2Z1Pl4IjOG7U5ldm3qsHCwpdewg=
   app: marquee-matome
+  run:
+  - rake db:migrate
   on:
     repo: soramugi/marquee-matome
