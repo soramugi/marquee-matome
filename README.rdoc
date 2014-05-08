@@ -1,5 +1,6 @@
 == marqueeまとめ
 
-{<img src="https://travis-ci.org/soramugi/marquee-matome.svg?branch=master" alt="Build Status" />}[https://travis-ci.org/soramugi/marquee-matome]
+{<img src="https://travis-ci.org/soramugi/marquee-matome.svg?branch=master" alt="Build Status" />}[https://travis-ci.org/soramugi/marquee-matome] {<img src="https://coveralls.io/repos/soramugi/marquee-matome/badge.png" alt="Coverage Status" />}[https://coveralls.io/r/soramugi/marquee-matome]
+
 
 [http://marquee-matome.herokuapp.com]
