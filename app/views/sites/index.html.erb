@@ -1,0 +1,7 @@
+<h1>Sites#index</h1>
+<p>Find me in app/views/sites/index.html.erb</p>
+<% @sites.each do |site| %>
+  <p>
+    <%= link_to site.title, site_path(site.id) %>
+  </p>
+<% end %>

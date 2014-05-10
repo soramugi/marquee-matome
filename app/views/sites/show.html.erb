@@ -1,0 +1,9 @@
+<h1>Sites#show</h1>
+<p>Find me in app/views/sites/show.html.erb</p>
+
+<%= @site.title %>
+<%= link_to @site.url, @site.url %>
+
+<div>
+  <%= link_to '削除', site_path(@site.id), method: :delete, data: { confirm: '削除してもよろしいですか?' } %>
+</div>
