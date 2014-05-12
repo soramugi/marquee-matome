@@ -24,7 +24,9 @@ class SitesControllerTest < ActionController::TestCase
 
   test "should delete destroy" do
     site = sites(:one)
-    session[:user_id] = site.user_id
+    user = site.user
+    session[:user_id] = user.id
+    session[:name]    = user.name
     delete :destroy, id: site.id
     assert_response :redirect
   end
