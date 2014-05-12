@@ -1,8 +1,11 @@
-<h1>Sites#show</h1>
-<p>Find me in app/views/sites/show.html.erb</p>
-
-<%= @site.title %>
-<%= link_to @site.url, @site.url %>
+<h2><%= @site.title %></h2>
+<p class="pull-right">登録者: <%= @site.user.name %></p>
+<p><%= link_to @site.url, @site.url %></p>
+<div class='text-center'>
+  <%= link_to @site.url do %>
+    <%= image_tag @site.image_url, size: '600x600' %>
+  <% end %>
+</div>
 
 <div>
   <%= link_to '削除', site_path(@site.id), method: :delete, data: { confirm: '削除してもよろしいですか?' } %>
