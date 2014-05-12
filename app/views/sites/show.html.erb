@@ -1,4 +1,6 @@
 <h2><%= @site.title %></h2>
+<%= render partial: 'notice' %>
+<%= render partial: 'errors', locals: { errors: @site.errors } %>
 <p class="pull-right">登録者: <%= link_to @site.user.name, user_path(@site.user.name) %></p>
 <p><%= link_to @site.url, @site.url %></p>
 <div class='text-center'>

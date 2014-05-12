@@ -20,14 +20,14 @@ class SitesController < ApplicationController
   def create
     site = Site.new(site_params)
     if site.save
-      redirect_to url_for(action: :index), notice: '作成しました。'
+      redirect_to url_for(action: :show, id: site.id), notice: '作成しました。'
     else
       render :new
     end
   end
 
   def destroy
-    if myid == @site.user_id && @site.destroy
+    if @site.destroy
       redirect_to url_for(action: :index), notice: '削除しました。'
     else
       render :show

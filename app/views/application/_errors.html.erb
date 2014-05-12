@@ -1,0 +1,3 @@
+<% if errors.any? %>
+  <%= simple_format errors.full_messages.join("\n"), {class: "alert alert-danger"}, {wrapper_tag: :div} %>
+<% end %>

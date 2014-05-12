@@ -1,4 +1,5 @@
 <h3>サイト登録画面</h3>
+<%= render partial: 'errors', locals: { errors: @site.errors } %>
 <div class="well well-sm">
   <%= form_for @site, url: new_site_path, method: :get do |f| %>
     <div class="form-group">
