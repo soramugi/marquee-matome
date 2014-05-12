@@ -1,11 +1,14 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  title: MyString
-  url: MyString
+  title: はらすAAまとめ
+  url: http://homucifer.info/harasu/
   user: one
-
 two:
-  title: MyString
-  url: MyString
+  title: 速読ウェブサービス
+  url: http://hitode909.appspot.com/speed_reading/
   user: two
+three:
+  title: marquee - hitode909の日記
+  url: http://hitode909.hatenablog.com/entry/2014/03/17/201717
+  user: one
