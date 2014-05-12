@@ -1,6 +1,9 @@
 class Site < ActiveRecord::Base
   belongs_to :user
 
+  validates_presence_of :url
+  validates_presence_of :user_id
+
   def image_url
     "http://capture.heartrails.com/400x500/cool?#{url}"
   end

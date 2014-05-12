@@ -17,7 +17,8 @@ class SitesControllerTest < ActionController::TestCase
   end
 
   test "should post create" do
-    post :create
+    session[:user_id] = users(:one).id
+    post :create, site: { url: 'http://www.amazon.co.jp', title: 'amazon' }
     assert_response :redirect
   end
 

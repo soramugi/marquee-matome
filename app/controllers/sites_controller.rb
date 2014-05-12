@@ -12,8 +12,12 @@ class SitesController < ApplicationController
   end
 
   def create
-    # TODO 作成処理
-    redirect_to url_for(action: :index), notice: '作成しました。'
+    site = Site.new(site_params.merge(user_id: myid))
+    if site.save
+      redirect_to url_for(action: :index), notice: '作成しました。'
+    else
+      render :new
+    end
   end
 
   def destroy
@@ -28,5 +32,12 @@ class SitesController < ApplicationController
 
   def require_site
     @site = Site.find(params[:id])
+  end
+
+  def site_params
+    params.require(:site).permit(
+      :url,
+      :title,
+    )
   end
 end
