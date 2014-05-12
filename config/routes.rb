@@ -6,4 +6,6 @@ Rails.application.routes.draw do
 
   resources :sites, only: [:index, :show, :new, :create, :destroy]
 
+  get '/users/:name' => 'users#show', as: :user
+
 end

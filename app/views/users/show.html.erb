@@ -1,0 +1,17 @@
+<h1>Users#show</h1>
+<p>Find me in app/views/users/show.html.erb</p>
+
+<h3>登録サイト一覧</h3>
+<div id="sites" class="col-lg-12">
+  <% @user.sites.each do |site| %>
+    <div class="col-md-4">
+      <% if @user.id == myid %>
+        <%= link_to '削除', site_path(site.id), class: 'pull-right', method: :delete, data: { confirm: '削除してもよろしいですか?' } %>
+      <% end %>
+      <%= link_to site_path(site.id) do %>
+        <%= site.title %><br />
+        <%= image_tag site.thumnail %>
+      <% end %>
+    </div>
+  <% end %>
+</div>

@@ -17,6 +17,7 @@
               <%= image_tag myimage, { width: 30, heidth: 30, style: 'margin:-10px 0px;' } %> <span class="caret"></span>
             <% end %>
             <ul class="dropdown-menu">
+              <li><%= link_to 'My page', user_path(myname) %></li>
               <li><%= link_to 'Sign out', logout_path %></li>
             </ul>
           </li>
