@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
       User.create_with_omniauth(auth)
     user.update(image_url: auth['info']['image'])
     login(user)
-    redirect_to root_path
+    redirect_to user_path(user.name), notice: 'ログインしました'
   end
 
   def destroy
