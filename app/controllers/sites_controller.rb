@@ -28,7 +28,7 @@ class SitesController < ApplicationController
 
   def destroy
     if @site.destroy
-      redirect_to url_for(action: :index), notice: '削除しました。'
+      redirect_to user_path(myname), notice: '削除しました。'
     else
       render :show
     end

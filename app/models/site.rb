@@ -2,6 +2,7 @@ class Site < ActiveRecord::Base
   belongs_to :user
 
   validates_presence_of :url
+  validates_format_of :url, with: URI.regexp, message: 'が不正な形式です。'
   validates_presence_of :user_id
 
   def image_url
