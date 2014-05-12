@@ -13,8 +13,12 @@ class SitesController < ApplicationController
       @site = Site.new
     else
       @site = Site.new(site_params)
-      @site.generate_title if @site.title.blank?
-      render @site.valid? ? :confirm : :new
+      if @site.valid?
+        @site.generate_title if @site.title.blank?
+        render :confirm
+      else
+        render :new
+      end
     end
   end
 

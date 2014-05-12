@@ -16,6 +16,13 @@ class SitesControllerTest < ActionController::TestCase
     assert_response :success
   end
 
+  test "should get confirm" do
+    get :new, site: { url: 'http://www.amazon.co.jp', title: 'amazon' }
+    assert_response :success
+    get :new, site: { url: 'huge' }
+    assert_response :success
+  end
+
   test "should post create" do
     session[:user_id] = users(:one).id
     post :create, site: { url: 'http://www.amazon.co.jp', title: 'amazon' }
