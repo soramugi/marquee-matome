@@ -10,6 +10,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'nokogiri'
+gem 'kaminari'
 # Twitter Bootstrap
 gem 'twitter-bootswatch-rails', '~> 3.1.1'
 gem 'twitter-bootswatch-rails-helpers'
