@@ -3,9 +3,9 @@
 one:
   title: MyString
   url: MyString
-  user_id: MyString
+  user: one
 
 two:
   title: MyString
   url: MyString
-  user_id: MyString
+  user: two
