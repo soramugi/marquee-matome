@@ -7,6 +7,12 @@ class Site < ActiveRecord::Base
   validates_format_of :url, with: URI.regexp, message: 'が不正な形式です。'
   validates_presence_of :user_id
 
+  validate do
+    if Site.find_by(url: url).present?
+      errors.add(:url, 'が重複しています')
+    end
+  end
+
   def image_url
     "http://capture.heartrails.com/400x500/cool?#{url}"
   end
@@ -19,4 +25,5 @@ class Site < ActiveRecord::Base
     read_data = ::NKF.nkf("--utf8", open(url).read)
     self.title = ::Nokogiri::HTML.parse(read_data, nil, 'utf8').xpath('//title').text
   end
+
 end
