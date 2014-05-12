@@ -2,7 +2,7 @@ class SitesController < ApplicationController
   before_action :require_site, only: [:show, :destroy]
 
   def index
-    @sites = Site.all
+    @sites = Site.all.order('id desc')
   end
 
   def show
