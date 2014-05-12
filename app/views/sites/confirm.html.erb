@@ -1,0 +1,22 @@
+<h3>確認画面</h3>
+<div class="well well-sm">
+  <%= form_for @site, url: { action: :create } do |f| %>
+    <%= f.hidden_field :url %>
+    <%= f.hidden_field :title %>
+    <div class="form-group">
+      <%= f.label :url %>
+      <div class="form-control-group">
+        <%= f.text_field :url, class: 'form-control col-percent-40', disabled: true %>
+        <span class="required">※必須</span>
+      </div>
+      <%= f.label :title %>
+      <div class="form-control-group">
+        <%= f.text_field :title, class: 'form-control col-percent-40', disabled: true %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= submit_tag '作成', class: 'btn btn-primary' %>
+      <%= link_to '戻る', new_site_path, class: 'btn btn-default' %>
+    </div>
+  <% end %>
+</div>
