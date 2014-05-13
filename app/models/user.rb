@@ -9,4 +9,8 @@ class User < ActiveRecord::Base
       user.image_url = auth['info']['image']
     end
   end
+
+  def url
+    "https://twitter.com/#{name}"
+  end
 end
