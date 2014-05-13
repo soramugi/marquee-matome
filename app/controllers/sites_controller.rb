@@ -14,7 +14,7 @@ class SitesController < ApplicationController
     else
       @site = Site.new(site_params)
       if @site.valid?
-        @site.generate_title if @site.title.blank?
+        @site.generate_title
         render :confirm
       else
         render :new
@@ -24,6 +24,7 @@ class SitesController < ApplicationController
 
   def create
     site = Site.new(site_params)
+    site.generate_title
     if site.save
       redirect_to url_for(action: :show, id: site.id), notice: '作成しました。'
     else
@@ -48,7 +49,6 @@ class SitesController < ApplicationController
   def site_params
     params.require(:site).permit(
       :url,
-      :title,
     ).merge(user_id: myid)
   end
 end
