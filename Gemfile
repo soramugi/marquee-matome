@@ -12,6 +12,7 @@ gem 'omniauth-twitter'
 gem 'nokogiri'
 gem 'kaminari'
 gem 'friendly_id', '~> 5.0.0'
+gem 'rmagick'
 
 # Twitter Bootstrap
 gem 'twitter-bootswatch-rails', '~> 3.1.1'

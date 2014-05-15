@@ -34,4 +34,16 @@ class Site < ActiveRecord::Base
     self.title = ::Nokogiri::HTML.parse(read_data, nil, 'utf8').xpath('//title').text
   end
 
+  def generate_gif
+    dir = 'tmp/pict'
+    `phantomjs #{Rails.root.join('bin/pict.js')} '#{url}' '#{Rails.root.join(dir)}'`
+    images = Dir.glob(Rails.root.join(dir, '*'))
+    rmagick = ::Magick::ImageList.new(*images)
+    rmagick.iterations = 0
+    rmagick.each {|i| i.delay = 5 }
+    File.delete(*images)
+    rmagick.write(Rails.root.join('animation.gif'))
+    rmagick
+  end
+
 end
