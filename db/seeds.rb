@@ -8,7 +8,7 @@
 
 user = User.where(
   provider:  'twitter',
-  uid:       68404422,
+  uid:       '68404422',
   name:      'soramugi',
   image_url: 'http://pbs.twimg.com/profile_images/2863509226/5ebf54d483f89f1811fc0faa57acdcbe_normal.jpeg',
 ).first_or_create
