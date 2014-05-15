@@ -27,7 +27,7 @@ class SitesController < ApplicationController
     site = Site.new(site_params)
     site.generate_title
     if site.save
-      redirect_to url_for(action: :show, id: site.friendly_id), notice: '作成しました。'
+      redirect_to site_path(site), notice: '作成しました。'
     else
       render :new
     end
