@@ -54,4 +54,12 @@ class SitesControllerTest < ActionController::TestCase
     assert_response :redirect
   end
 
+  test "should delete destroy error" do
+    site = sites(:one)
+    user = User.where.not(id: site.user.id).first
+    login(user)
+    delete :destroy, id: site.id
+    assert_response :success
+  end
+
 end
