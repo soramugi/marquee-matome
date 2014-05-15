@@ -1,6 +1,14 @@
 require 'open-uri'
 require 'nkf'
 class Site < ActiveRecord::Base
+  extend FriendlyId
+  friendly_id :title, use: :slugged
+
+  # friendly_id の日本語対応
+  def normalize_friendly_id(string)
+    string.gsub(/[\.\s]/, "-")
+  end
+
   belongs_to :user
 
   validates_presence_of :url

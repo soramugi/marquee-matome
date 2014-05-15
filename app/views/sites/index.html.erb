@@ -2,7 +2,7 @@
 <div id="sites" class="col-lg-12">
   <% @sites.each do |site| %>
     <div class="col-md-4 site">
-      <%= link_to site_path(site.id) do %>
+      <%= link_to site_path(site) do %>
         <%= truncate(site.title, length: 25, omission: '...') %><br />
         <%= image_tag site.thumnail %>
       <% end %>

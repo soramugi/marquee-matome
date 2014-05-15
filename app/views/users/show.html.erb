@@ -22,9 +22,9 @@
   <% @user.sites.each do |site| %>
     <div class="col-md-4">
       <% if @user.id == myid %>
-        <%= link_to '削除', site_path(site.id), class: 'pull-right', method: :delete, data: { confirm: '削除してもよろしいですか?' } %>
+        <%= link_to '削除', site_path(site), class: 'pull-right', method: :delete, data: { confirm: '削除してもよろしいですか?' } %>
       <% end %>
-      <%= link_to site_path(site.id) do %>
+      <%= link_to site_path(site) do %>
         <%= truncate(site.title, length: 23, omission: '...') %><br />
         <%= image_tag site.thumnail %>
       <% end %>

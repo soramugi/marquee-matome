@@ -11,6 +11,8 @@ gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'nokogiri'
 gem 'kaminari'
+gem 'friendly_id', '~> 5.0.0'
+
 # Twitter Bootstrap
 gem 'twitter-bootswatch-rails', '~> 3.1.1'
 gem 'twitter-bootswatch-rails-helpers'
