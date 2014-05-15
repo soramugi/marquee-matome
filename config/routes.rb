@@ -8,4 +8,5 @@ Rails.application.routes.draw do
 
   get '/users/:name' => 'users#show', as: :user
 
+  match '*a' => 'application#not_found', via: [:get, :post, :put, :delete]
 end

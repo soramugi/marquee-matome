@@ -4,7 +4,18 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   helper_method :current_user, :login?, :myid, :myname, :myimage
 
+  rescue_from StandardError, with: :not_found
+
+  def not_found
+    render status: 404, template: 'errors/not_found.html.erb'
+  end
+
   private
+    def authenticate!
+      # TODO 認証促す画面に遷移
+      raise 'Not Login' unless login?
+    end
+
     def current_user
       @current_user ||= User.find(session[:user_id]) if session[:user_id]
     end

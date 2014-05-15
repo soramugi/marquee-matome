@@ -22,4 +22,9 @@ class ActiveSupport::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
+  def login user
+    session[:user_id]   = user.id
+    session[:name]      = user.name
+    session[:image_url] = user.image_url
+  end
 end

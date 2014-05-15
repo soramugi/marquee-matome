@@ -1,4 +1,5 @@
 class SitesController < ApplicationController
+  before_filter :authenticate!, only: [:new, :create, :destroy]
   before_action :require_site, only: [:show, :destroy]
 
   def index
