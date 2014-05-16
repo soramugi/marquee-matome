@@ -24,6 +24,8 @@ if (system.args.length < 3 || system.args.length > 4) {
   }
 
   page.viewportSize = { width: frame_width, height: frame_height };
+  // TODO marqueeタグの位置をピンポイントでキャプチャ
+  // http://shokai.org/blog/archives/7101
   page.clipRect = { top: 0, left: 0, width: frame_width, height: frame_height };
 
   page.onConsoleMessage = function (msg) {
