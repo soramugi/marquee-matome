@@ -13,6 +13,7 @@ gem 'nokogiri'
 gem 'kaminari'
 gem 'friendly_id', '~> 5.0.0'
 gem 'rmagick'
+gem 'paperclip', git: 'git://github.com/thoughtbot/paperclip.git'
 
 # Twitter Bootstrap
 gem 'twitter-bootswatch-rails', '~> 3.1.1'
@@ -30,9 +31,9 @@ group :development, :test do
 end
 group :test do
   gem 'hashie'
-  gem 'mocha', :require => false
-  gem 'simplecov', :require => false
-  gem 'coveralls', :require => false
+  gem 'mocha', require: false
+  gem 'simplecov', require: false
+  gem 'coveralls', require: false
 end
 group :production do
   gem 'pg'

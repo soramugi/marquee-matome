@@ -44,6 +44,8 @@ if (system.args.length < 3 || system.args.length > 4) {
         console.log(filename);
       }
       page.render(frame_dir + '/' + filename, { format: file_format });
+      // アプリケーションでファイルパスを受け取る
+      console.log(frame_dir + '/' + filename)
       frame_number++;
       if(frame_number > max_frames) {
         if (debug) {

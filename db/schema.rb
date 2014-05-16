@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140515011742) do
+ActiveRecord::Schema.define(version: 20140516004315) do
 
   create_table "friendly_id_slugs", force: true do |t|
     t.string   "slug",                      null: false
@@ -29,10 +29,14 @@ ActiveRecord::Schema.define(version: 20140515011742) do
   create_table "sites", force: true do |t|
     t.string   "title"
     t.string   "url"
-    t.integer  "user_id",    limit: 255
+    t.integer  "user_id",              limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "slug"
+    t.string   "capture_file_name"
+    t.string   "capture_content_type"
+    t.integer  "capture_file_size"
+    t.datetime "capture_updated_at"
   end
 
   add_index "sites", ["slug"], name: "index_sites_on_slug", unique: true

@@ -6,6 +6,10 @@
 <p><%= link_to @site.url, @site.url %></p>
 <div class='text-center'>
   <%= link_to @site.url do %>
-    <%= image_tag @site.image_url, size: '600x600' %>
+    <% if @site.capture.path %>
+      <%= image_tag @site.capture.url %>
+    <% else %>
+      <%= image_tag @site.image_url, size: '800x800' %>
+    <% end %>
   <% end %>
 </div>

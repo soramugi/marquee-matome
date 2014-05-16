@@ -21,5 +21,7 @@ module MarqueeMatome
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
     config.assets.precompile += %w( cosmo.css cosmo.js )
+
+    Paperclip::Attachment.default_options[:storage] = :filesystem
   end
 end

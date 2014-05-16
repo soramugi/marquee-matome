@@ -9,6 +9,9 @@ class Site < ActiveRecord::Base
     string.gsub(/[\.\s]/, "-")
   end
 
+  has_attached_file :capture, styles: { thumb: '300x300#' }
+  validates_attachment_content_type :capture, content_type: /\Aimage\/.*\Z/
+
   belongs_to :user
 
   validates_presence_of :url
@@ -16,7 +19,7 @@ class Site < ActiveRecord::Base
   validates_presence_of :user_id
 
   validate do
-    if Site.find_by(url: url).present?
+    if new_record? && Site.find_by(url: url).present?
       errors.add(:url, 'が重複しています')
     end
   end
@@ -35,15 +38,19 @@ class Site < ActiveRecord::Base
   end
 
   def generate_gif
-    dir = 'tmp/pict'
-    `phantomjs #{Rails.root.join('bin/pict.js')} '#{url}' '#{Rails.root.join(dir)}'`
-    images = Dir.glob(Rails.root.join(dir, '*'))
+    images = local_generate_captures
     rmagick = ::Magick::ImageList.new(*images)
+    File.delete(*images)
     rmagick.iterations = 0
     rmagick.each {|i| i.delay = 5 }
-    File.delete(*images)
-    rmagick.write(Rails.root.join('animation.gif'))
-    rmagick
+    tempfile = Tempfile.new(['animation', '.gif'])
+    rmagick.write(tempfile.path)
+    update_attributes!(capture: File.new(tempfile.path))
+    tempfile.close!
   end
 
+  private
+  def local_generate_captures dir = 'tmp/pict'
+    `phantomjs #{Rails.root.join('bin/pict.js')} '#{url}' '#{Rails.root.join(dir)}'`.split(/[\r\n]/)
+  end
 end

@@ -4,7 +4,11 @@
     <div class="col-md-4 site">
       <%= link_to site_path(site) do %>
         <%= truncate(site.title, length: 25, omission: '...') %><br />
-        <%= image_tag site.thumnail %>
+        <% if site.capture.path %>
+          <%= image_tag site.capture.url(:thumb) %>
+        <% else %>
+          <%= image_tag site.thumnail %>
+        <% end %>
       <% end %>
     </div>
   <% end %>
