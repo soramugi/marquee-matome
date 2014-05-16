@@ -23,5 +23,6 @@ module MarqueeMatome
     config.assets.precompile += %w( cosmo.css cosmo.js )
 
     Paperclip::Attachment.default_options[:storage] = :filesystem
+    Paperclip::Attachment.default_options[:url]     = '/images/:styles/:filename'
   end
 end
