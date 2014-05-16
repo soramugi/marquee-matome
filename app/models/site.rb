@@ -9,7 +9,7 @@ class Site < ActiveRecord::Base
     string.gsub(/[\.\s]/, "-")
   end
 
-  has_attached_file :capture, styles: { thumb: '300x300#' }
+  has_attached_file :capture, styles: { thumnail: '300x300#' }
   validates_attachment_content_type :capture, content_type: /\Aimage\/.*\Z/
 
   belongs_to :user
