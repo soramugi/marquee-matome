@@ -19,6 +19,7 @@ class Site < ActiveRecord::Base
   validates_presence_of :user_id
 
   validate do
+    # TODO marqueeタグが使われてるサイトか確認
     if new_record? && Site.find_by(url: url).present?
       errors.add(:url, 'が重複しています')
     end

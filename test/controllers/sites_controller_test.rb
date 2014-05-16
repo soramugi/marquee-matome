@@ -58,7 +58,9 @@ class SitesControllerTest < ActionController::TestCase
     site = sites(:one)
     user = User.where.not(id: site.user.id).first
     login(user)
-    delete :destroy, id: site.id
+    assert_no_difference('Site.count', -1) do
+      delete :destroy, id: site.id
+    end
     assert_response :success
   end
 
