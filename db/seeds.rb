@@ -14,11 +14,6 @@ user = User.where(
 ).first_or_create
 
 Site.where(
-  title: 'はらすAAまとめ',
-  url: 'http://homucifer.info/harasu/',
-  user_id: user.id,
-).first_or_create
-Site.where(
   title: '速読ウェブサービス',
   url: 'http://hitode909.appspot.com/speed_reading/',
   user_id: user.id,
