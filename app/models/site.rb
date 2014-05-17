@@ -19,7 +19,9 @@ class Site < ActiveRecord::Base
   validates_presence_of :user_id
 
   validate do
-    # TODO marqueeタグが使われてるサイトか確認
+    if new_record? && !marquee?
+      errors.add(:base, 'marqueeタグを使用しているサイトのみ登録できます')
+    end
     if new_record? && Site.find_by(url: url).present?
       errors.add(:url, 'が重複しています')
     end
@@ -30,6 +32,10 @@ class Site < ActiveRecord::Base
   end
   def thumnail
     "http://capture.heartrails.com/300x300/cool?#{url}"
+  end
+
+  def marquee?
+    data_parse.xpath('//marquee').present? rescue false
   end
 
   def generate_title

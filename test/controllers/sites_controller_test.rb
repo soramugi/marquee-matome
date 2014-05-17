@@ -3,9 +3,7 @@ require 'test_helper'
 class SitesControllerTest < ActionController::TestCase
   def setup
     @url = 'http://www.example.com'
-    stub_request(:get, @url).
-      with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent'=>'Ruby'}).
-      to_return(:status => 200, :body => "", :headers => {})
+    stub_request(:get, @url).to_return(body: '<marquee>hi</marquee>')
   end
 
   test "should get index" do
