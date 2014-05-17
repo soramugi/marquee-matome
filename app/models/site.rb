@@ -33,9 +33,25 @@ class Site < ActiveRecord::Base
   end
 
   def generate_title
-    url.gsub!(Regexp.new("[^#{URI::PATTERN::ALNUM}\/\:\?\=&~,\.\(\)#]")) {|match| ERB::Util.url_encode(match)}
-    read_data = ::NKF.nkf("--utf8", open(url).read)
-    self.title = ::Nokogiri::HTML.parse(read_data, nil, 'utf8').xpath('//title').text
+    self.title = data_parse.xpath('//title').text
+  end
+
+  def url_convert!
+    self.url.gsub!(
+      Regexp.new("[^#{URI::PATTERN::ALNUM}\/\:\?\=&~,\.\(\)#]")
+    ) {|match| ERB::Util.url_encode(match)}
+  end
+
+  def read_data
+    if @read_data.blank?
+      url_convert!
+      @read_data = NKF.nkf('--utf8', open(self.url).read)
+    end
+    @read_data
+  end
+
+  def data_parse
+    Nokogiri::HTML.parse(read_data, nil, 'utf8')
   end
 
   def generate_gif
