@@ -1,6 +1,13 @@
 require 'test_helper'
 
 class SitesControllerTest < ActionController::TestCase
+  def setup
+    @url = 'http://www.example.com'
+    stub_request(:get, @url).
+      with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent'=>'Ruby'}).
+      to_return(:status => 200, :body => "", :headers => {})
+  end
+
   test "should get index" do
     get :index
     assert_response :success
@@ -25,7 +32,7 @@ class SitesControllerTest < ActionController::TestCase
   test "should get confirm not login" do
     get :new, site: { url: 'huge' }
     assert_response 404
-    get :new, site: { url: 'http://www.amazon.co.jp' }
+    get :new, site: { url: @url }
     assert_response 404
   end
 
@@ -33,14 +40,14 @@ class SitesControllerTest < ActionController::TestCase
     login(users(:one))
     get :new, site: { url: 'huge' }
     assert_response :success
-    get :new, site: { url: 'http://www.amazon.co.jp' }
+    get :new, site: { url: @url }
     assert_response :success
   end
 
   test "should post create" do
     login(users(:one))
     assert_difference('Site.count') do
-      post :create, site: { url: 'http://www.amazon.co.jp' }
+      post :create, site: { url: @url }
     end
     assert_response :redirect
   end
