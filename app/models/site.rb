@@ -62,7 +62,7 @@ class Site < ActiveRecord::Base
 
   def generate_gif
     images = local_generate_captures
-    rmagick = ::Magick::ImageList.new(*images)
+    rmagick = Magick::ImageList.new(*images)
     File.delete(*images)
     rmagick.iterations = 0
     rmagick.each {|i| i.delay = 5 }
