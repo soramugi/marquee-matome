@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  has_many :sites
+  has_many :sites, -> { order('id desc') }
 
   def self.create_with_omniauth(auth)
     create! do |user|

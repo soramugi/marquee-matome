@@ -26,7 +26,11 @@
       <% end %>
       <%= link_to site_path(site) do %>
         <%= truncate(site.title, length: 23, omission: '...') %><br />
-        <%= image_tag site.thumnail %>
+        <% if site.capture.path %>
+          <%= image_tag site.capture.url(:thumnail) %>
+        <% else %>
+          <%= image_tag site.thumnail %>
+        <% end %>
       <% end %>
     </div>
   <% end %>
