@@ -22,6 +22,17 @@ if (system.args.length < 3 || system.args.length > 4) {
     debug   = system.args[3];
     console.log('start');
   }
+  // iPhone
+  var userAgent = 'Mozilla/5.0 (iPhone; CPU iPhone OS 5_1_1 like Mac OS X) AppleWebKit/534.46 (KHTML, like Gecko) Version/5.1 Mobile/9B206 Safari/7534.48.3';
+  var userAgent = 'PhantomJS';
+
+  page.customHeaders = {
+    'Connection' : 'keep-alive',
+    'Accept-Charset' : 'Shift_JIS,utf-8;q=0.7,*;q=0.3',
+    'Accept-Language' : 'ja,en-US;q=0.8,en;q=0.6',
+    'Cache-Control' : 'no-cache',
+    'User-Agent' : userAgent
+  };
 
   page.viewportSize = { width: frame_width, height: frame_height };
   // TODO marqueeタグの位置をピンポイントでキャプチャ
